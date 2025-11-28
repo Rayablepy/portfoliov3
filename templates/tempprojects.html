@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-banner">
+    <div class="hero-content">
+        <h1>My Projects</h1>
+        <p>Explore my portfolio of work</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="container">
+    <section class="section">
+        <div class="content-wrapper">
+            <div class="section-title">
+                <h2>All Projects</h2>
+                <p>{{ projects|length }} projects and counting</p>
+            </div>
+            
+            <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding: 20px; max-width: 1200px; margin: 0 auto;">
+                {% for project in projects %}
+                <div class="mv-card animate-on-scroll" style="padding: 25px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">{{ project.title }}</h3>
+                    <p style="color: var(--text-color); margin-bottom: 15px; font-size: 0.95rem;">{{ project.description }}</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
+                        {% for tech in project.tech %}
+                        <span style="background: var(--dark-color); color: var(--text-color); padding: 4px 12px; border-radius: 15px; font-size: 0.85rem;">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        {% if project.link %}
+                        <a href="{{ project.link }}" class="btn-hero-secondary" style="padding: 8px 16px; font-size: 0.9rem;" target="_blank">View Live</a>
+                        {% endif %}
+                        {% if project.github %}
+                        <a href="{{ project.github }}" class="btn-hero-secondary" style="padding: 8px 16px; font-size: 0.9rem;" target="_blank">GitHub</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

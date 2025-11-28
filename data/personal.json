@@ -1,50 +1,42 @@
 {
-  "name": "Alex Morgan",
-  "title": "Full-Stack Developer & Creative Technologist",
-  "tagline": "Crafting digital experiences that inspire and engage",
-  "bio": "I'm a passionate developer with 5+ years of experience building elegant solutions to complex problems. I specialize in creating beautiful, performant web applications that users love.",
-  "email": "alex.morgan@example.com",
-  "location": "San Francisco, CA",
-  "availability": "Available for freelance work",
+  "name": "Muhammad Rayhan",
+  "title": "Full-Stack Developer & Student of AI",
+  "tagline": "Utilising AI everywhere,everytime.",
+  "bio": "I began learning programming as a Computing student in Secondary 3. Since then, I have developed a strong passion for coding, and eventually found my dream job as an AI engineer. Through EAE, I was able to join Nanyang Polytechnic's Diploma in Applied AI and Analytics course, where I am currently in my first year of study. I am excited to continue my journey in the field of AI and work towards achieving my career goals.",
+  "email": "rayable11.0808@gmail.com",
+  "location": "Singapore",
+  "availability": "Not available at the moment",
   "social": {
-    "github": "https://github.com/alexmorgan",
-    "linkedin": "https://linkedin.com/in/alexmorgan",
-    "twitter": "https://twitter.com/alexmorgan",
-    "dribbble": "https://dribbble.com/alexmorgan"
+    "github": "https://github.com/Rayablepy",
+    "linkedin": "https://www.linkedin.com/in/muhammad-rayhan-619908372/",
+    "Instagram": "https://www.instagram.com/rayhan08._/"
   },
   "about": {
-    "intro": "With a background in computer science and a passion for design, I bridge the gap between technical excellence and user experience. My work focuses on building scalable, accessible applications that make a difference.",
+    "intro": "I began learning programming as a Computing student in Secondary 3. Since then, I have developed a strong passion for coding, and eventually found my dream job as an AI engineer. Through EAE, I was able to join Nanyang Polytechnic's Diploma in Applied AI and Analytics course, where I am currently in my first year of study. I am excited to continue my journey in the field of AI and work towards achieving my career goals.",
     "interests": [
-      "User Experience Design",
-      "Performance Optimization",
-      "Open Source Contribution",
-      "Accessibility Advocacy"
+      "Full Stack Development",
+      "AI engineering",
+      "Machine Learning"
     ],
     "experience": [
       {
-        "company": "TechCorp Inc.",
-        "role": "Senior Full-Stack Developer",
-        "period": "2021 - Present",
-        "description": "Leading development of customer-facing applications serving 100K+ users"
+        "company": "Secondary school",
+        "role": "Computing student",
+        "period": "2023-2024",
+        "description": "The beginning of my journey in information technology"
       },
       {
-        "company": "StartupXYZ",
-        "role": "Full-Stack Developer",
-        "period": "2019 - 2021",
-        "description": "Built and scaled MVP to production with modern tech stack"
-      },
-      {
-        "company": "Digital Agency",
-        "role": "Frontend Developer",
-        "period": "2018 - 2019",
-        "description": "Delivered custom web solutions for diverse client portfolio"
+        "company": "Nanyang polytechnic",
+        "role": "Student in Applied AI and analytics",
+        "period": "2025-Present",
+        "description": "Advancing my learning with Full stack development,AI and analytics."
       }
     ]
   },
   "skills": {
-    "Frontend": ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-    "Backend": ["Node.js", "Python", "PostgreSQL", "GraphQL", "REST APIs"],
-    "Tools": ["Git", "Docker", "Figma", "VS Code", "Vercel"],
-    "Practices": ["Agile", "TDD", "CI/CD", "Code Review", "Documentation"]
+    "Frontend": ["React", "TypeScript", "Next.js"],
+    "Backend": ["Node.js", "Python", "SQL","SQLite", "MySQL", "REST APIs"],
+    "Tools": ["Git", "Docker", "Figma", "VS Code"],
+    "Practices": ["Agile","Scrum", "CI/CD", "Code Review", "Documentation"]
   }
 }
