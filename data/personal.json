@@ -1,0 +1,50 @@
+{
+  "name": "Alex Morgan",
+  "title": "Full-Stack Developer & Creative Technologist",
+  "tagline": "Crafting digital experiences that inspire and engage",
+  "bio": "I'm a passionate developer with 5+ years of experience building elegant solutions to complex problems. I specialize in creating beautiful, performant web applications that users love.",
+  "email": "alex.morgan@example.com",
+  "location": "San Francisco, CA",
+  "availability": "Available for freelance work",
+  "social": {
+    "github": "https://github.com/alexmorgan",
+    "linkedin": "https://linkedin.com/in/alexmorgan",
+    "twitter": "https://twitter.com/alexmorgan",
+    "dribbble": "https://dribbble.com/alexmorgan"
+  },
+  "about": {
+    "intro": "With a background in computer science and a passion for design, I bridge the gap between technical excellence and user experience. My work focuses on building scalable, accessible applications that make a difference.",
+    "interests": [
+      "User Experience Design",
+      "Performance Optimization",
+      "Open Source Contribution",
+      "Accessibility Advocacy"
+    ],
+    "experience": [
+      {
+        "company": "TechCorp Inc.",
+        "role": "Senior Full-Stack Developer",
+        "period": "2021 - Present",
+        "description": "Leading development of customer-facing applications serving 100K+ users"
+      },
+      {
+        "company": "StartupXYZ",
+        "role": "Full-Stack Developer",
+        "period": "2019 - 2021",
+        "description": "Built and scaled MVP to production with modern tech stack"
+      },
+      {
+        "company": "Digital Agency",
+        "role": "Frontend Developer",
+        "period": "2018 - 2019",
+        "description": "Delivered custom web solutions for diverse client portfolio"
+      }
+    ]
+  },
+  "skills": {
+    "Frontend": ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+    "Backend": ["Node.js", "Python", "PostgreSQL", "GraphQL", "REST APIs"],
+    "Tools": ["Git", "Docker", "Figma", "VS Code", "Vercel"],
+    "Practices": ["Agile", "TDD", "CI/CD", "Code Review", "Documentation"]
+  }
+}

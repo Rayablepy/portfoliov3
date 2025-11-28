@@ -1,0 +1,76 @@
+[
+  {
+    "id": "1",
+    "title": "E-Commerce Platform",
+    "description": "A full-featured online marketplace with real-time inventory management, payment processing, and analytics dashboard.",
+    "longDescription": "Built a comprehensive e-commerce solution handling thousands of daily transactions. Implemented advanced features including dynamic pricing, recommendation engine, and multi-vendor support.",
+    "category": "Web Application",
+    "tech": ["React", "Node.js", "PostgreSQL", "Stripe", "Redis"],
+    "image": "/placeholder.svg",
+    "featured": true,
+    "year": "2023",
+    "link": "https://example.com/project1",
+    "github": "https://github.com/alexmorgan/ecommerce"
+  },
+  {
+    "id": "2",
+    "title": "Task Management App",
+    "description": "Collaborative task management tool with real-time updates, team workspaces, and productivity analytics.",
+    "longDescription": "Designed and developed a modern task management application with focus on team collaboration. Features include drag-and-drop boards, automated workflows, and integrations with popular tools.",
+    "category": "SaaS",
+    "tech": ["Next.js", "TypeScript", "Supabase", "Framer Motion"],
+    "image": "/placeholder.svg",
+    "featured": true,
+    "year": "2023",
+    "link": "https://example.com/project2"
+  },
+  {
+    "id": "3",
+    "title": "AI Content Generator",
+    "description": "ML-powered content generation platform for marketers and content creators with customizable templates.",
+    "longDescription": "Created an AI-driven platform that helps users generate high-quality content. Integrated with multiple AI models and provided intuitive interface for customization.",
+    "category": "AI/ML",
+    "tech": ["React", "Python", "FastAPI", "OpenAI", "TailwindCSS"],
+    "image": "/placeholder.svg",
+    "featured": false,
+    "year": "2023",
+    "link": "https://example.com/project3",
+    "github": "https://github.com/alexmorgan/ai-content"
+  },
+  {
+    "id": "4",
+    "title": "Portfolio CMS",
+    "description": "Headless CMS specifically designed for creative professionals to showcase their work.",
+    "longDescription": "Built a flexible content management system with drag-and-drop builder, customizable themes, and seamless media handling for artists and designers.",
+    "category": "Web Application",
+    "tech": ["Next.js", "GraphQL", "MongoDB", "AWS S3"],
+    "image": "/placeholder.svg",
+    "featured": false,
+    "year": "2022",
+    "github": "https://github.com/alexmorgan/portfolio-cms"
+  },
+  {
+    "id": "5",
+    "title": "Fitness Tracking App",
+    "description": "Mobile-first fitness application with workout plans, progress tracking, and social features.",
+    "longDescription": "Developed a comprehensive fitness platform with personalized workout recommendations, nutrition tracking, and community challenges.",
+    "category": "Mobile",
+    "tech": ["React Native", "Node.js", "PostgreSQL", "Redux"],
+    "image": "/placeholder.svg",
+    "featured": true,
+    "year": "2022",
+    "link": "https://example.com/project5"
+  },
+  {
+    "id": "6",
+    "title": "Real Estate Platform",
+    "description": "Property listing and management platform with virtual tours and AI-powered search.",
+    "longDescription": "Created an innovative real estate platform featuring 3D virtual tours, intelligent property matching, and comprehensive market analytics.",
+    "category": "Web Application",
+    "tech": ["React", "Three.js", "Django", "PostgreSQL"],
+    "image": "/placeholder.svg",
+    "featured": false,
+    "year": "2022",
+    "link": "https://example.com/project6"
+  }
+]
