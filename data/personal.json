@@ -5,7 +5,7 @@
   "bio": "I began learning programming as a Computing student in Secondary 3. Since then, I have developed a strong passion for coding, and eventually found my dream job as an AI engineer. Through EAE, I was able to join Nanyang Polytechnic's Diploma in Applied AI and Analytics course, where I am currently in my first year of study. I am excited to continue my journey in the field of AI and work towards achieving my career goals.",
   "email": "rayable11.0808@gmail.com",
   "location": "Singapore",
-  "availability": "Not available at the moment",
+  "availability": "Available for freelance work",
   "social": {
     "github": "https://github.com/Rayablepy",
     "linkedin": "https://www.linkedin.com/in/muhammad-rayhan-619908372/",
@@ -34,9 +34,11 @@
     ]
   },
   "skills": {
-    "Frontend": ["React", "TypeScript", "Next.js"],
-    "Backend": ["Node.js", "Python", "SQL","SQLite", "MySQL", "REST APIs"],
-    "Tools": ["Git", "Docker", "Figma", "VS Code"],
+    "Frontend": ["HTML","CSS","JavaScript","React", "TypeScript", "Next.js","Swift"],
+    "Backend": ["Node.js", "Python","Flask", "SQL","PHP","Java"],
+    "Tools": ["Git", "Docker", "Figma", "VS Code"]
+  },
+  "comments":{
     "Practices": ["Agile","Scrum", "CI/CD", "Code Review", "Documentation"]
   }
 }
