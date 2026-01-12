@@ -32,6 +32,7 @@ def contact():
     personal_data = load_json('personal.json')
     return render_template('contact.html', mydata=personal_data)
 
+@app.route('/achievements')
 def achievements():
     personal_data = load_json('personal.json')
     return render_template('achievements.html', mydata=personal_data)
