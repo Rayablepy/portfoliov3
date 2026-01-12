@@ -32,10 +32,10 @@ def contact():
     personal_data = load_json('personal.json')
     return render_template('contact.html', mydata=personal_data)
 
-@app.route('/achievements')
-def achievements():
-    personal_data = load_json('personal.json')
-    return render_template('achievements.html', mydata=personal_data)
+#@app.route('/achievements')
+#def achievements():
+ #   personal_data = load_json('personal.json')
+  #  return render_template('achievements.html', mydata=personal_data)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
