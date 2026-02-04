@@ -35,8 +35,8 @@
   },
   "skills": {
     "Frontend": ["HTML","CSS","JavaScript","React", "TypeScript", "Next.js","Swift"],
-    "Backend": ["Node.js", "Python","Flask", "SQL","PHP","Java"],
-    "Tools": ["Git", "Docker", "Figma", "VS Code"]
+    "Backend": ["Node.js", "Python","Flask", "SQLite","MySQL","Java","MongoDB"],
+    "Tools": ["Git", "Docker", "Figma", "VS Code","Pycharm"]
   },
   "comments":{
     "Practices": ["Agile","Scrum", "CI/CD", "Code Review", "Documentation"]
