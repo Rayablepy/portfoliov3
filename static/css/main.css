@@ -111,6 +111,10 @@ p {
     height: 32px;
     margin-right: 10px;
     width: auto;
+    border-radius:50%;
+    width:42px;
+    height: 42px;
+    object-fit: cover;
 }
 
 /* Navigation Links */
