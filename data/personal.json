@@ -34,7 +34,7 @@
     ]
   },
   "skills": {
-    "Frontend": ["HTML","CSS","JavaScript","React", "TypeScript", "Next.js","Swift"],
+    "Frontend": ["HTML","CSS","JavaScript","React", "TypeScript", "Next.js"],
     "Backend": ["Node.js", "Python","Flask", "SQLite","MySQL","Java","MongoDB"],
     "Tools": ["Git", "Docker", "Figma", "VS Code","Pycharm"]
   },
