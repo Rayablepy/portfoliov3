@@ -4,16 +4,21 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-banner">
+<section class="hero-banner" id="home">
     <div class="hero-content">
         <h1>Hi, I'm Rayhan</h1>
         <p>Full stack developer and aspiring AI engineer</p>
+        <div class="hero-buttons">
+            <a href="/projects" class="btn-hero-primary">View My Work</a>
+            <a href="/user" class="btn-hero-secondary">Learn More</a>
+        </div>
     </div>
 </section>
 
 <!-- Main Content -->
 <main class="container">
-    <section class="section">
+    <!-- About Section -->
+    <section class="section" id="about">
         <div class="content-wrapper">
             <div class="section-title">
                 <h2>About Me</h2>
@@ -25,45 +30,92 @@
         </div>
     </section>
 
-    <section class="section">
+    <!-- Featured Projects Section -->
+    <section class="section" id="projects">
         <div class="content-wrapper">
             <div class="section-title">
                 <h2>Featured Projects</h2>
                 <p>Explore my latest work</p>
             </div>
-            <div class="hero-buttons">
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 50px auto; padding: 0 20px;">
+                {% for project in featured_projects %}
+                <div class="project-card animate-on-scroll">
+                    <img src="" alt="{{ project.title }}" style="width: 100%; height: 200px; background: #f0f0f0; margin: -30px -30px 20px -30px; border-radius: 12px 12px 0 0;">
+                    <h3>{{ project.title }}</h3>
+                    <p style="text-align: left;">{{ project.description }}</p>
+                    
+                    <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px;">
+                        {% for tech in project.tech %}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div style="margin-top: 20px; display: flex; gap: 10px;">
+                        {% if project.link %}
+                        <a href="{{ project.link }}" class="btn-hero-secondary" style="padding: 8px 16px; font-size: 0.9rem; text-transform: none; letter-spacing: 0;" target="_blank">View Live</a>
+                        {% endif %}
+                        {% if project.github %}
+                        <a href="{{ project.github }}" class="btn-hero-secondary" style="padding: 8px 16px; font-size: 0.9rem; text-transform: none; letter-spacing: 0;" target="_blank">Code</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="hero-buttons" style="margin-top: 60px;">
                 <a href="/projects" class="btn-hero-primary">View All Projects</a>
             </div>
         </div>
     </section>
 
-    <section class="section">
+    <!-- Skills Section -->
+    <section class="section" id="skills">
         <div class="content-wrapper">
             <div class="section-title">
-                <h2>Skills & Expertise</h2>
-                <p>Some of the languages and tools I work with</p>
+                <h2>Skills & Technologies</h2>
+                <p>Tools and languages I work with</p>
             </div>
             
             <div class="skills-grid">
                 <table class="skills-items">
                     <tr>
-                        <td>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="python icon"/>
+                        <td class="animate-on-scroll">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" title="Python" />
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Python</p>
                         </td>
-                        <td>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
+                        <td class="animate-on-scroll">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript" />
+                            <p style="margin-top: 10px; font-size: 0.9rem;">JavaScript</p>
                         </td>
-                        <td>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java icon"/>
+                        <td class="animate-on-scroll">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" title="React" />
+                            <p style="margin-top: 10px; font-size: 0.9rem;">React</p>
                         </td>
-                        <td>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" />
+                        <td class="animate-on-scroll">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" title="Flask" />
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Flask</p>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div class="hero-buttons">
-                <a href="/user" class="btn-hero-primary">Read More</a>
+            
+            <div class="hero-buttons" style="margin-top: 50px;">
+                <a href="/user" class="btn-hero-primary">See All Skills</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" id="cta">
+        <div class="content-wrapper">
+            <div class="section-title">
+                <h2>Let's Work Together</h2>
+                <p>Get in touch and let's create something amazing</p>
+            </div>
+            
+            <div class="hero-buttons" style="margin-top: 40px;">
+                <a href="mailto:{{ mydata.email }}" class="btn-hero-primary">Send Me an Email</a>
             </div>
         </div>
     </section>
