@@ -4,10 +4,10 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-banner">
+<section class="hero-banner" id="projects-hero">
     <div class="hero-content">
         <h1>My Projects</h1>
-        <p>Explore my portfolio of work</p>
+        <p>A showcase of my work and expertise</p>
     </div>
 </section>
 
@@ -17,25 +17,36 @@
         <div class="content-wrapper">
             <div class="section-title">
                 <h2>All Projects</h2>
-                <p>{{ projects|length }} projects and counting</p>
+                <p>{{ projects|length }} projects completed</p>
             </div>
             
-            <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding: 20px; max-width: 1200px; margin: 0 auto;">
+            <!-- Projects Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; max-width: 1300px; margin: 60px auto; padding: 0 20px;">
                 {% for project in projects %}
-                <div class="mv-card animate-on-scroll" style="padding: 25px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">{{ project.title }}</h3>
-                    <p style="color: var(--text-color); margin-bottom: 15px; font-size: 0.95rem;">{{ project.description }}</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
+                <div class="project-card animate-on-scroll">
+                    <!-- Project Image-->
+                    <div style="width: 100%; height: 220px; background: linear-gradient(135deg, #f5f5f5, #e0e0e0); margin: -30px -30px 25px -30px; border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: center;">
+                        <img src="/static/resources%20file/img.png" alt="{{ project.title }}" class="project-card-img">
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <h3>{{ project.title }}</h3>
+                    <p style="text-align: left; margin-bottom: 15px;">{{ project.description }}</p>
+                    
+                    <!-- Tech Stack -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0;">
                         {% for tech in project.tech %}
-                        <span style="background: var(--dark-color); color: var(--text-color); padding: 4px 12px; border-radius: 15px; font-size: 0.85rem;">{{ tech }}</span>
+                        <span class="tech-tag">{{ tech }}</span>
                         {% endfor %}
                     </div>
-                    <div style="display: flex; gap: 10px;">
+                    
+                    <!-- Project Links -->
+                    <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
                         {% if project.link %}
-                        <a href="{{ project.link }}" class="btn-hero-secondary" style="padding: 8px 16px; font-size: 0.9rem;" target="_blank">View Live</a>
+                        <a href="{{ project.link }}" class="btn-hero-secondary" style="padding: 10px 18px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; flex: 1;" target="_blank">View Live</a>
                         {% endif %}
                         {% if project.github %}
-                        <a href="{{ project.github }}" class="btn-hero-secondary" style="padding: 8px 16px; font-size: 0.9rem;" target="_blank">GitHub</a>
+                        <a href="{{ project.github }}" class="btn-hero-secondary" style="padding: 10px 18px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; flex: 1;" target="_blank">GitHub</a>
                         {% endif %}
                     </div>
                 </div>

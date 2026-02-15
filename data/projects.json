@@ -1,28 +1,14 @@
 [
   {
     "id": "1",
-    "title": "ML powered graph analyser",
-    "description": "A python based tool that utilises machine learning algorithms.",
-    "longDescription": "A python based tool that utilises machine learning algorithms such as monte carlo approximation and confidence intervals and libraries such as scipy,matplotlib and numpy. The tool runs up to 10 thousand possibilities to graph a future trend based on historical data. Test cases using real life data have shown an accuracy rate of 87%.",
-    "category": "AI/ML",
-    "tech": ["python","pyplot","pandas","numpy","gc"],
-    "image": "/",
-    "featured": false,
-    "year": "2025",
-    "link": "/",
-    "github": "/"
-  },
-  {
-    "id": "2",
     "title": "Personal Portfolio Website",
-    "description": "A personal portfolio website to showcase my projects and skills, the very website you are currently viewing.",
-    "longDescription": "A personal portfolio website built using HTML, CSS, and JavaScript and takes data from a JSON database using Flask. The website features a clean and modern design, with sections for my projects, skills, and contact information. It is fully responsive and optimized for both desktop and mobile devices.",
+    "description": "A personal portfolio website to showcase information about myself, the very website you are currently viewing.",
     "category": "Web Development",
     "tech": ["HTML","CSS","JavaScript","Flask","Python","JSON"],
     "image": "/",
     "featured": false,
     "year": "2025",
     "link": "/",
-    "github": "/"
+    "github": "https://github.com/Rayablepy/portfoliov3"
   }
 ]

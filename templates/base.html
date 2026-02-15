@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Portfolio{% endblock %} - Rayable</title>
+    <title>{% block title %}Portfolio{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="topnav">
+    <nav class="topnav" id="topnav">
         <div class="topnav-container">
-            <!-- Desktop Navigation -->
-            <a href="#" class="logo">
+            <!-- Logo
+            <a href="/" class="logo">
                 <img src="static/resources file/wpfp.jpg" alt="Logo">
             </a>
+            -->
+            <!-- Desktop Navigation -->
             <ul class="nav-links">
-
                 <li><a href="/" {% if request.endpoint == 'home' %}class="active"{% endif %}>Home</a></li>
                 <li><a href="/projects" {% if request.endpoint == 'projects' %}class="active"{% endif %}>Projects</a></li>
-                <li><a href="/user" {% if request.endpoint == 'about' %}class="active"{% endif %}>About Me</a></li>
+                <li><a href="/user" {% if request.endpoint == 'about' %}class="active"{% endif %}>About</a></li>
+                <li><a href="/achievements" {% if request.endpoint == 'achievements' %}class="active"{% endif %}>Achievements</a></li>
             </ul>
             
             <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <span class="material-symbols-outlined">menu</span>
             </button>
         </div>
@@ -35,8 +37,8 @@
             <ul class="mobile-nav-links">
                 <li><a href="/" {% if request.endpoint == 'home' %}class="active"{% endif %}>Home</a></li>
                 <li><a href="/projects" {% if request.endpoint == 'projects' %}class="active"{% endif %}>Projects</a></li>
-                <li><a href="/user" {% if request.endpoint == 'about' %}class="active"{% endif %}>About Me</a></li>
-                <li><a href="/achievements" {% if request.endpoint == 'about' %}class="active"{% endif %}>Achievements</a></li>
+                <li><a href="/user" {% if request.endpoint == 'about' %}class="active"{% endif %}>About</a></li>
+                <li><a href="/achievements" {% if request.endpoint == 'achievements' %}class="active"{% endif %}>Achievements</li>
             </ul>
         </div>
     </nav>
@@ -49,24 +51,26 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3 class="footer-headings">Social links</h3>
+                    <h3 class="footer-headings">Connect</h3>
                     <ul class="footer-menu">
-                        <li><a href="https://www.instagram.com/rayhan08._/" target="_blank" rel="noopener">Instagram</a></li>
-                        <li><a href="https://www.linkedin.com/in/muhammad-rayhan-619908372/" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3 class="footer-headings">Page links</h3>
+                    <h3 class="footer-headings">Navigation</h3>
                     <ul class="footer-menu">
-                        <li><a href="/">Home page</a></li>
-                        <li><a href="/projects">Projects page</a></li>
-                        <li><a href="/user">About Me Page</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/projects">Projects</a></li>
+                        <li><a href="/user">About</a></li>
+                        <li><a href="/achievements">Achievements</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="update">
-                <p class="update-date">Last Updated: November 2025</p>
+                <p class="update-date">© 2025. All rights reserved.</p>
             </div>
         </div>
     </footer>
