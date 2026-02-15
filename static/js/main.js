@@ -72,28 +72,19 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
 
 function highlightActiveNav() {
     const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
-    const sections = document.querySelectorAll('section[id]');
-    
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-    
+    const currentPath = window.location.pathname;
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
-        if (href && href.includes(current)) {
+        if (href === currentPath) {
             link.classList.add('active');
         }
     });
 }
 
+window.addEventListener('load', highlightActiveNav);
+window.addEventListener('hashchange', highlightActiveNav);
 window.addEventListener('scroll', highlightActiveNav);
 highlightActiveNav();
 
