@@ -2,8 +2,7 @@ from flask import Flask, render_template, jsonify
 import json
 import os
 
-app = Flask(__name__)
-
+app = Flask(__name__, static_folder='public', static_url_path='')
 # Load data from JSON files
 def load_json(filename):
     with open(os.path.join('data', filename), 'r') as f:
