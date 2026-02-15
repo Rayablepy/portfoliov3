@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Portfolio{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('public', filename='css/main.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
@@ -15,7 +15,7 @@
         <div class="topnav-container">
             <!-- Logo
             <a href="/" class="logo">
-                <img src="static/resources file/wpfp.jpg" alt="Logo">
+                <img src="public/resources file/wpfp.jpg" alt="Logo">
             </a>
             -->
             <!-- Desktop Navigation -->
@@ -76,6 +76,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('public', filename='js/main.js') }}"></script>
 </body>
 </html>
