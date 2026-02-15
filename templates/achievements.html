@@ -7,6 +7,35 @@
 <section class="hero-banner">
     <div class="hero-content">
         <h1>Achievements</h1>
-        <p>{{ mydata.title }}</p>
+        <p>Certifications and accomplishments</p>
     </div>
 </section>
+
+<!-- Main Content -->
+<main class="container">
+    <section class="section">
+        <div class="content-wrapper">
+            <div class="section-title">
+                <h2>Certificates</h2>
+                <p>Professional credentials earned</p>
+            </div>
+            
+            <div class="certificates-grid">
+                {% for cert in mydata.certificates %}
+                <div class="certificate-card animate-on-scroll">
+                    <div class="certificate-image">
+                        <img src="/static/resources%20file/cert1.png" alt="{{ cert.title }}">
+                    </div>
+                    
+                    <div class="certificate-content">
+                        <h3>{{ cert.title }}</h3>
+                        <p class="certificate-issuer">{{ cert.issuer }}</p>
+                        <p class="certificate-description">{{ cert.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

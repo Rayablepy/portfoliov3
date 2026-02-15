@@ -4,20 +4,21 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-banner">
+<section class="hero-banner" id="about-hero">
     <div class="hero-content">
         <h1>About Me</h1>
-        <p>{{ mydata.title }}</p>
+        <p>{{ mydata.tagline }}</p>
     </div>
 </section>
 
 <!-- Main Content -->
 <main class="container">
-    <section class="section">
+    <!-- Story Section -->
+    <section class="section" id="story">
         <div class="content-wrapper">
             <div class="section-title">
                 <h2>My Story</h2>
-                <p>{{ mydata.tagline }}</p>
+                <p>How it all started</p>
             </div>
             <div class="section-content">
                 <p>{{ mydata.about.intro }}</p>
@@ -25,40 +26,43 @@
         </div>
     </section>
 
-    <section class="section">
+    <!-- Experience Section -->
+    <section class="section" id="experience">
         <div class="content-wrapper">
             <div class="section-title">
-                <h2>Experience</h2>
-                <p>My professional journey</p>
+                <h2>Professional Experience</h2>
+                <p>My career journey</p>
             </div>
             
             <div style="max-width: 900px; margin: 0 auto;">
                 {% for exp in mydata.about.experience %}
-                <div class="mv-card animate-on-scroll" style="margin-bottom: 25px; padding: 25px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 5px;">{{ exp.role }}</h3>
-                    <h4 style="color: var(--text-color); margin-bottom: 5px;">{{ exp.company }}</h4>
-                    <p style="color: var(--muted-foreground); font-size: 0.9rem; margin-bottom: 10px;">{{ exp.period }}</p>
-                    <p style="color: var(--text-color);">{{ exp.description }}</p>
+                <div class="mv-card animate-on-scroll" style="margin-bottom: 25px;">
+                    <h3>{{ exp.role }}</h3>
+                    <h4 style="color: var(--text-primary); font-weight: 600; margin-bottom: 8px;">{{ exp.company }}</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; text-align: left;">{{ exp.period }}</p>
+                    <p style="text-align: left; color: var(--text-secondary);">{{ exp.description }}</p>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </section>
 
-    <section class="section">
+    <!-- Skills Section -->
+    <section class="section" id="all-skills">
         <div class="content-wrapper">
             <div class="section-title">
-                <h2>Skills & Technologies</h2>
-                <p>Tools and technologies I work with</p>
+                <h2>Technical Skills</h2>
+                <p>Tools and technologies I specialize in</p>
             </div>
             
-            <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 0 20px;">
                 {% for category, skills in mydata.skills.items() %}
-                <div class="mv-card animate-on-scroll" style="padding: 25px; text-align: center;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 15px;">{{ category }}</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                <div class="mv-card animate-on-scroll" style="text-align: center;">
+                    <h3>{{ category }}</h3>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px;">
                         {% for skill in skills %}
-                        <span style="background: var(--dark-color); color: var(--text-color); padding: 6px 14px; border-radius: 15px; font-size: 0.9rem;">{{ skill }}</span>
+                        <span class="tech-tag">{{ skill }}</span>
                         {% endfor %}
                     </div>
                 </div>
@@ -67,14 +71,16 @@
         </div>
     </section>
 
-    <section class="section">
+    <!-- Contact Section -->
+    <section class="section" id="contact">
         <div class="content-wrapper">
             <div class="section-title">
                 <h2>Get In Touch</h2>
                 <p>{{ mydata.availability }}</p>
             </div>
-            <div class="hero-buttons">
-                <a href="mailto:{{ mydata.email }}" class="btn-hero-primary">Email Me</a>
+            
+            <div class="hero-buttons" style="margin-top: 40px;">
+                <a href="mailto:{{ mydata.email }}" class="btn-hero-primary">Send Email</a>
                 <a href="{{ mydata.social.linkedin }}" class="btn-hero-secondary" target="_blank">LinkedIn</a>
                 <a href="{{ mydata.social.github }}" class="btn-hero-secondary" target="_blank">GitHub</a>
             </div>
