@@ -38,6 +38,13 @@
     "Backend": ["Node.js", "Python","Flask", "SQLite","MySQL","Java","MongoDB"],
     "Tools": ["Git", "Docker", "Figma", "VS Code","Pycharm"]
   },
+  "certificates": [
+    {
+      "title": "AI Fluency: Framework and Foundations",
+      "issuer": "Anthropic",
+      "description": "A certificate earnt through the completion of a short course on common yet effective AI practices"
+    }
+  ],
   "comments":{
     "Practices": ["Agile","Scrum", "CI/CD", "Code Review", "Documentation"]
   }
