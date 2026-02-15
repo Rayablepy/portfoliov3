@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5ccd534-4046-4c50-a2dd-f7d0f6cf509f" name="Changes" comment="Pushing additions to allow vercel to get images" />
+    <list default="true" id="c5ccd534-4046-4c50-a2dd-f7d0f6cf509f" name="Changes" comment="Updated flask run" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +143,7 @@
       <workItem from="1771136097673" duration="5975000" />
       <workItem from="1771142134505" duration="312000" />
       <workItem from="1771142586622" duration="111000" />
-      <workItem from="1771142714348" duration="296000" />
+      <workItem from="1771142714348" duration="754000" />
     </task>
     <task id="LOCAL-00001" summary="Updated json info and requirements.txt">
       <option name="closed" value="true" />
@@ -233,7 +233,23 @@
       <option name="project" value="LOCAL" />
       <updated>1771143000273</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Pushing additions to allow vercel to get images">
+      <option name="closed" value="true" />
+      <created>1771143126582</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1771143126582</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Updated flask run">
+      <option name="closed" value="true" />
+      <created>1771143267707</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1771143267707</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +266,8 @@
     <MESSAGE value="Updated certificate,fixed broken navbar" />
     <MESSAGE value="i cant pull without this so" />
     <MESSAGE value="Pushing additions to allow vercel to get images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pushing additions to allow vercel to get images" />
+    <MESSAGE value="Updated flask run" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated flask run" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/portfoliov3$portfoliov3.coverage" NAME="portfoliov3 Coverage Results" MODIFIED="1771136191001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
