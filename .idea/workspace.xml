@@ -4,19 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5ccd534-4046-4c50-a2dd-f7d0f6cf509f" name="Changes" comment="fixed css ref">
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_15_2026_3_59_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="c5ccd534-4046-4c50-a2dd-f7d0f6cf509f" name="Changes" comment="added gitignore">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/achievements.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/projects.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tprojects.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vercel.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/templates/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/templates/achievements.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/templates/projects.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +88,9 @@
       <recent name="C:\Users\creat\PycharmProjects\portfoliov3\templates" />
       <recent name="C:\Users\creat\PycharmProjects\portfoliov3\static\js" />
       <recent name="C:\Users\creat\PycharmProjects\portfoliov3\static\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\creat\WebstormProjects\portfoliov3\public" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.about.html">
@@ -170,7 +170,7 @@
       <workItem from="1771142134505" duration="312000" />
       <workItem from="1771142586622" duration="111000" />
       <workItem from="1771142714348" duration="1060000" />
-      <workItem from="1778723661978" duration="1617000" />
+      <workItem from="1778723661978" duration="3178000" />
     </task>
     <task id="LOCAL-00001" summary="Updated json info and requirements.txt">
       <option name="closed" value="true" />
@@ -284,7 +284,23 @@
       <option name="project" value="LOCAL" />
       <updated>1771143638217</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="migrated to static html and remove jinja and flask dependencies">
+      <option name="closed" value="true" />
+      <created>1778725468131</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1778725468131</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added gitignore">
+      <option name="closed" value="true" />
+      <created>1778725541638</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1778725541638</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +319,9 @@
     <MESSAGE value="Pushing additions to allow vercel to get images" />
     <MESSAGE value="Updated flask run" />
     <MESSAGE value="fixed css ref" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed css ref" />
+    <MESSAGE value="migrated to static html and remove jinja and flask dependencies" />
+    <MESSAGE value="added gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="added gitignore" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/portfoliov3$portfoliov3.coverage" NAME="portfoliov3 Coverage Results" MODIFIED="1771136191001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
