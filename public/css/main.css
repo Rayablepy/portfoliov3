@@ -200,7 +200,7 @@ img {
     place-items: center;
     border: 1px solid var(--line);
     border-radius: 9px;
-    background: var(--text);
+    background: var(--cyan);
     color: var(--bg);
     font-family: "Space Grotesk", sans-serif;
     font-size: 0.9rem;
