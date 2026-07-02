@@ -5,7 +5,7 @@ export const profile = {
   name: 'Muhammad Rayhan',
   email: 'rayhan11.0808@gmail.com',
   tagline: 'Developing myself and my skills.',
-  availability: 'Available for selected AI and web projects',
+  availability: 'Available for selected projects',
   intro:
     "I began learning programming as a Computing student in Secondary 3. Since then, I have been shaping my path toward AI engineering while building full stack web projects that are fast, clear, and enjoyable to use. I am currently studying Applied AI and Analytics at Nanyang Polytechnic, where I am developing my learning across software, data, and intelligent systems.",
   location: 'Singapore',
@@ -85,17 +85,17 @@ export const skillGroups = [
   {
     category: 'Frontend Systems',
     summary: 'Interfaces with responsive layouts, motion, and component structure.',
-    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS', 'Bootstrap']
+    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS', 'Bootstrap','Streamlit']
   },
   {
     category: 'Backend Systems',
-    summary: 'APIs, data flow, storage, and foundations for all my full stack applications.',
+    summary: 'APIs, storage, and foundations for all my full stack applications.',
     skills: ['Node.js', 'Python', 'SQLite', 'MySQL', 'PostgreSQL', 'MongoDB']
   },
   {
-    category: 'AI Foundations',
-    summary: 'A certificate that covers foundational AI skills',
-    skills: [ 'AI Concepts', 'Prompting', 'Model Evaluation']
+    category: 'Artificial Intelligence',
+    summary: 'Frameworks and technologies for AI development',
+    skills: ['langchain','lmstudio','deep agents','RAG']
   },
   {
     category: 'Creative Workflow',

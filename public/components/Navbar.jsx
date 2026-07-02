@@ -33,7 +33,6 @@ export function Navbar({ activePage }) {
     <header className={`topnav${scrolled ? ' scrolled' : ''}`}>
       <a className="brand-mark" href="#/" aria-label="Go to home">
         <span>MR</span>
-        <small>{profile.location}</small>
       </a>
 
       <nav className="nav-shell" aria-label="Primary navigation">
@@ -47,7 +46,7 @@ export function Navbar({ activePage }) {
 
       <a className="nav-availability" href={`mailto:${profile.email}`}>
         <span />
-        Available
+        Contact me
       </a>
 
       <button
