@@ -1,5 +1,5 @@
 import Lenis from 'lenis';
-import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
+import { AnimatePresence, motion, MotionConfig, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
 import { Footer } from './Footer.jsx';
 import { Navbar } from './Navbar.jsx';
@@ -72,17 +72,21 @@ export function App() {
   }, []);
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
+      <a className="skip-link" href="#main-content" onClick={onSkipClick}>
+        Skip to content
+      </a>
       <div className="site-bg" aria-hidden="true">
         <span className="aurora aurora-one" />
         <span className="aurora aurora-two" />
-        <span className="grid-field" />
       </div>
       <CursorSpotlight />
       <Navbar activePage={route.key} />
       <AnimatePresence mode="wait">
         <motion.div
           key={route.key}
+          id="main-content"
+          tabIndex={-1}
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
@@ -92,7 +96,7 @@ export function App() {
         </motion.div>
       </AnimatePresence>
       <Footer />
-    </>
+    </MotionConfig>
   );
 }
 
@@ -114,8 +118,8 @@ function CursorSpotlight() {
     }
 
     const onPointerMove = (event) => {
-      x.set(event.clientX - 220);
-      y.set(event.clientY - 220);
+      x.set(event.clientX - 190);
+      y.set(event.clientY - 190);
     };
 
     window.addEventListener('pointermove', onPointerMove);
@@ -123,5 +127,14 @@ function CursorSpotlight() {
   }, [x, y]);
 
   return <motion.div className="cursor-spotlight" style={{ x: springX, y: springY }} aria-hidden="true" />;
+}
+
+function onSkipClick(event) {
+  event.preventDefault();
+  const main = document.getElementById('main-content');
+  if (main) {
+    main.focus();
+    main.scrollIntoView();
+  }
 }
 

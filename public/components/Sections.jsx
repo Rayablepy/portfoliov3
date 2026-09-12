@@ -1,15 +1,19 @@
 import { motion } from 'framer-motion';
-import { CertificateCard, ExperienceCard, ProjectCard, SkillCard, SkillGroup } from './Cards.jsx';
-import { certificates, experience, iconSkills, projects, skillGroups } from './data.js';
+import { CertificateCard, ExperienceCard, ProjectCard, ProjectRow, SkillCard, SkillGroup, StarredRow } from './Cards.jsx';
+import { certificates, experience, iconSkills, projects, skillGroups, starred } from './data.js';
 
 export const reveal = {
-  hidden: { opacity: 0, y: 42, filter: 'blur(10px)' },
+  hidden: { opacity: 0, y: 26, filter: 'blur(6px)' },
   visible: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
   }
+};
+
+export const gridParent = {
+  visible: { transition: { staggerChildren: 0.09 } }
 };
 
 export function Section({ id, eyebrow, title, lead, children, className = '' }) {
@@ -31,20 +35,39 @@ export function SectionTitle({ eyebrow, title, lead }) {
   );
 }
 
-export function ProjectGrid({ compact = false }) {
+export function ProjectGrid({ compact = false, variant = 'feature', limit }) {
+  const ArchiveCard = variant === 'archive' ? ProjectRow : ProjectCard;
+  const list = limit ? projects.slice(0, limit) : projects;
+
   return (
     <motion.div
-      className={`project-grid${compact ? ' compact' : ''}`}
+      className={`project-grid${compact ? ' compact' : ''}${variant === 'archive' ? ' project-archive' : ''}`}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
-      variants={{
-        visible: { transition: { staggerChildren: 0.12 } }
-      }}
+      variants={gridParent}
     >
-      {projects.map((project, index) => (
+      {list.map((project, index) => (
         <motion.div variants={reveal} key={project.title}>
-          <ProjectCard compact={compact} index={index} project={project} />
+          <ArchiveCard compact={compact} index={index} project={project} />
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+
+export function StarredList() {
+  return (
+    <motion.div
+      className="starred-list"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-80px' }}
+      variants={gridParent}
+    >
+      {starred.map((item) => (
+        <motion.div variants={reveal} key={item.url}>
+          <StarredRow item={item} />
         </motion.div>
       ))}
     </motion.div>
@@ -70,7 +93,7 @@ export function SkillGroups() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
-      variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+      variants={gridParent}
     >
       {skillGroups.map((group) => (
         <motion.div variants={reveal} key={group.category}>

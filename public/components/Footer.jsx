@@ -1,6 +1,8 @@
 import { navigation, profile } from './data.js';
 
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="footer-top">
@@ -42,7 +44,7 @@ export function Footer() {
         </div>
       </div>
 
-      <p className="footer-meta">© 2026 Muhammad Rayhan</p>
+      <p className="footer-meta">© {year} Muhammad Rayhan</p>
     </footer>
   );
 }

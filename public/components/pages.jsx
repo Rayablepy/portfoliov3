@@ -1,7 +1,8 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Mail, MousePointer2, Sparkles } from 'lucide-react';
-import { CertificateGrid, ExperienceList, ProjectGrid, Section, SkillCards, SkillGroups, reveal } from './Sections.jsx';
-import { profile, projects } from './data.js';
+import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { ArrowRight, Mail, Sparkles } from 'lucide-react';
+import { useRef } from 'react';
+import { CertificateGrid, ExperienceList, ProjectGrid, Section, SkillCards, SkillGroups, StarredList, reveal } from './Sections.jsx';
+import { certificates, experience, homeProjectCount, profile, projects, skillGroups, starred } from './data.js';
 
 export function HomePage() {
   return (
@@ -21,11 +22,11 @@ export function HomePage() {
 
         <Section
           id="projects"
-          eyebrow="02 / Work Index"
+          eyebrow={`02 / Work Index · ${homeProjectCount} featured`}
           title="My learning reflected in personal projects."
           lead="Each project is treated as a testament to my skills with visual evidence, context, tooling, and a clear path to the source code."
         >
-          <ProjectGrid compact />
+          <ProjectGrid compact limit={homeProjectCount} />
           <div className="section-action">
             <MagneticLink href="#/projects">Explore all work</MagneticLink>
           </div>
@@ -49,10 +50,23 @@ export function HomePage() {
 export function ProjectsPage() {
   return (
     <>
-      <PageHero eyebrow={`${projects.length} featured build`} title="My projects" lead="An archive of projects, systems, and experiments currently worth showing." />
+      <PageHero
+        eyebrow={`${projects.length} ${projects.length === 1 ? 'build' : 'builds'} in the archive`}
+        title="Selected work"
+        lead="An archive of projects, systems, and experiments currently worth showing."
+      />
       <main>
         <Section id="all-projects" eyebrow="Archive" title="Built for more than just learning.">
-          <ProjectGrid />
+          <ProjectGrid variant="archive" />
+        </Section>
+
+        <Section
+          id="starred"
+          eyebrow={`Reference shelf · ${starred.length} starred`}
+          title="Open source I keep within reach."
+          lead="Repositories I've starred while learning — tools and systems whose craft I study, borrow from, and ship against."
+        >
+          <StarredList />
         </Section>
       </main>
     </>
@@ -68,11 +82,11 @@ export function AboutPage() {
           <AboutSignal />
         </Section>
 
-        <Section id="experience" eyebrow="Timeline" title="A focused path, still early and intentional.">
+        <Section id="experience" eyebrow={`Timeline · ${experience.length} milestones`} title="A focused path, still early and intentional.">
           <ExperienceList />
         </Section>
 
-        <Section id="all-skills" eyebrow="Capabilities" title="A stack for practical, polished digital work.">
+        <Section id="all-skills" eyebrow={`Capabilities · ${skillGroups.length} groups`} title="A stack for practical, polished digital work.">
           <SkillGroups />
         </Section>
 
@@ -85,9 +99,13 @@ export function AboutPage() {
 export function AchievementsPage() {
   return (
     <>
-      <PageHero eyebrow="Credentials" title="Learning record" lead="Certificates and milestones from a still-growing technical path." />
+      <PageHero eyebrow="Credentials" title="Proof of a growing practice." lead="Certificates and milestones from a still-expanding technical path — learning in the open, one credential at a time." />
       <main>
-        <Section id="certificates" eyebrow="Certificates" title="Small signs of continued growth and practice.">
+        <Section
+          id="certificates"
+          eyebrow={`Certificates · ${certificates.length} on file`}
+          title="Small signs of continued growth and practice."
+        >
           <CertificateGrid />
         </Section>
       </main>
@@ -119,7 +137,7 @@ function Hero() {
             I am building toward full stack and AI engineering through fast interfaces, structured learning, and product-minded craft.
           </p>
           <div className="hero-panel" aria-label="Current focus">
-            <span>Current day</span>
+            <span>Now</span>
             <strong>Applied AI and Analytics student</strong>
             <small>Full stack / Python / Analytics</small>
           </div>
@@ -128,7 +146,7 @@ function Hero() {
             <a href="#/about" className="ghost-link">
               About me <ArrowRight size={16} />
             </a>
-          </div>+
+          </div>
         </motion.div>
       </motion.div>
     </section>
@@ -166,6 +184,12 @@ function AboutSignal() {
 }
 
 function ContactPanel() {
+  const socials = [
+    { label: 'GitHub', url: profile.social.github },
+    { label: 'LinkedIn', url: profile.social.linkedin },
+    { label: 'Instagram', url: profile.social.instagram }
+  ];
+
   return (
     <section className="contact-panel" id="contact">
       <div>
@@ -177,19 +201,52 @@ function ContactPanel() {
         {profile.email}
       </a>
       <div className="contact-links">
-        <a href={profile.social.github} target="https://github.com/Rayablepy">GitHub</a>
-        <a href={profile.social.linkedin} target="https://www.linkedin.com/in/muhd-rayhan/">LinkedIn</a>
-        <a href={profile.social.instagram} target="https://www.instagram.com/rayhan08._/">Instagram</a>
+        {socials.map((social) => (
+          <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer">
+            {social.label} <ArrowRight size={14} />
+          </a>
+        ))}
       </div>
     </section>
   );
 }
 
 function MagneticLink({ href, children }) {
+  const ref = useRef(null);
+  const reduceMotion = useReducedMotion();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 220, damping: 18, mass: 0.6 });
+  const springY = useSpring(y, { stiffness: 220, damping: 18, mass: 0.6 });
+
+  const onPointerMove = (event) => {
+    if (!ref.current || reduceMotion) {
+      return;
+    }
+    const rect = ref.current.getBoundingClientRect();
+    const dx = event.clientX - (rect.left + rect.width / 2);
+    const dy = event.clientY - (rect.top + rect.height / 2);
+    x.set(Math.max(-14, Math.min(14, dx * 0.25)));
+    y.set(Math.max(-10, Math.min(10, dy * 0.25)));
+  };
+
+  const onPointerLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
-    <motion.a className="magnetic-link" href={href} whileHover={{ scale: 1.035 }} whileTap={{ scale: 0.98 }}>
+    <motion.a
+      ref={ref}
+      className="magnetic-link"
+      href={href}
+      style={{ x: springX, y: springY }}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+      whileTap={{ scale: 0.97 }}
+    >
       {children}
-      <MousePointer2 size={16} />
+      <ArrowRight size={16} />
     </motion.a>
   );
 }
