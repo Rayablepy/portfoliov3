@@ -33,7 +33,6 @@ export function Navbar({ activePage }) {
     <header className={`topnav${scrolled ? ' scrolled' : ''}`}>
       <a className="brand-mark" href="#/" aria-label="Go to home">
         <span>MR</span>
-        <small>Rayhan</small>
       </a>
 
       <nav className="nav-shell" aria-label="Primary navigation">

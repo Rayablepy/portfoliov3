@@ -27,8 +27,6 @@ export const navigation = [
   { label: 'Achievements', href: '#/achievements', key: 'achievements' }
 ];
 
-export const homeProjectCount = 1;
-
 export const projects = [
   {
     title: 'Personal Portfolio Website',
@@ -65,7 +63,7 @@ export const projects = [
     title: 'LTADataMallpy',
     eyebrow: 'Data & Analytics',
     description:
-      "A tidy Python wrapper around Singapore's LTA DataMall API. Bus arrivals, taxi availability, and traffic data come back as structured Python objects instead of raw JSON.",
+      "A tidy Python wrapper around Singapore's LTA DataMall API. Bus arrivals, taxi availability, and traffic data come back as structured Python objects instead of raw JSON. Now officially released on PyPi.",
     outcome: 'Turned a dense public data portal into a small importable library for analytics and learning projects.',
     tech: ['Python','HTTPX'],
     github: `${github}/LTADataMallpy`
@@ -188,7 +186,7 @@ export const certificates = [
   {
     title: 'AWS Certified Cloud Practitioner',
     issuer: 'Amazon Web Services',
-    year: '2026',
+    year: '2025',
     level: 'Foundational',
     description:
       'Covers the core AWS services, pricing, security, and the cloud concepts every project starts from.'
@@ -196,7 +194,7 @@ export const certificates = [
   {
     title: 'AI Fluency: Frameworks and Foundations',
     issuer: 'Anthropic',
-    year: '2026',
+    year: '2025',
     level: 'Short course',
     description:
       'Earned after a short course on the AI practices that matter: prompting well, understanding how models behave, and using them responsibly.',

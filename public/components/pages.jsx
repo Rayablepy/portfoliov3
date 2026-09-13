@@ -1,8 +1,8 @@
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { ArrowRight, Mail, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Mail, Sparkles } from 'lucide-react';
 import { useRef } from 'react';
 import { CertificateGrid, ExperienceList, ProjectGrid, Section, SkillCards, SkillGroups, StarredList, reveal } from './Sections.jsx';
-import { certificates, experience, homeProjectCount, profile, projects, skillGroups, starred } from './data.js';
+import { certificates, experience, profile, projects, skillGroups, starred } from './data.js';
 
 export function HomePage() {
   return (
@@ -22,14 +22,11 @@ export function HomePage() {
 
         <Section
           id="projects"
-          eyebrow={`02 / Work Index · ${homeProjectCount} featured`}
+          eyebrow="02 / Work Index"
           title="The projects I built while learning."
           lead="Every project here shows what I was learning at the time, the tools I used, and where you can read the source."
         >
-          <ProjectGrid compact limit={homeProjectCount} />
-          <div className="section-action">
-            <MagneticLink href="#/projects">Explore all work</MagneticLink>
-          </div>
+          <ProjectsCta />
         </Section>
 
         <Section
@@ -180,6 +177,28 @@ function AboutSignal() {
         </motion.div>
       ))}
     </motion.div>
+  );
+}
+
+function ProjectsCta() {
+  return (
+    <motion.a
+      className="project-cta"
+      href="#/projects"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-80px' }}
+      variants={reveal}
+    >
+      <div className="project-cta-body">
+        <p className="eyebrow">Full archive · {projects.length} projects</p>
+        <h3>My top projects, all in one place.</h3>
+        <p>Portfolio, AI assistants, RAG experiments, and API tooling, each with the source attached.</p>
+      </div>
+      <span className="project-cta-arrow" aria-hidden="true">
+        <ArrowUpRight size={24} />
+      </span>
+    </motion.a>
   );
 }
 
