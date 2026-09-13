@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Code2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Award, Code2 } from 'lucide-react';
 
 export function ProjectCard({ project, index = 0, compact = false }) {
   return (
@@ -101,21 +101,25 @@ export function ExperienceCard({ item, index }) {
   );
 }
 
-export function CertificateCard({ certificate }) {
+export function CertificateCard({ certificate, index = 0 }) {
   return (
-    <motion.article className="certificate-card" whileHover={{ y: -4 }}>
-      <div className="certificate-image">
-        <img
-          src={certificate.image}
-          alt={`${certificate.title} — ${certificate.issuer} certificate`}
-          loading="lazy"
-        />
+    <motion.article className="certificate-card" whileHover={{ y: -5 }}>
+      <div className="certificate-head">
+        <span className="certificate-emblem" aria-hidden="true">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <p className="certificate-issuer">{certificate.issuer}</p>
+        {certificate.year && <span className="certificate-year">{certificate.year}</span>}
       </div>
 
-      <div className="certificate-content">
-        <p className="eyebrow">{certificate.issuer}</p>
-        <h3>{certificate.title}</h3>
-        <p>{certificate.description}</p>
+      <h3>{certificate.title}</h3>
+      <p className="certificate-description">{certificate.description}</p>
+
+      <div className="certificate-foot">
+        {certificate.level && <span className="certificate-level">{certificate.level}</span>}
+        <span className="certificate-issued">
+          <Award size={14} /> Credential
+        </span>
       </div>
     </motion.article>
   );

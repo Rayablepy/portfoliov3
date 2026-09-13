@@ -117,8 +117,8 @@ export function ExperienceList() {
 export function CertificateGrid() {
   return (
     <div className="certificates-grid">
-      {certificates.map((certificate) => (
-        <CertificateCard certificate={certificate} key={certificate.title} />
+      {certificates.map((certificate, index) => (
+        <CertificateCard certificate={certificate} index={index} key={certificate.title} />
       ))}
     </div>
   );

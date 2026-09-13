@@ -23,8 +23,8 @@ export function HomePage() {
         <Section
           id="projects"
           eyebrow={`02 / Work Index · ${homeProjectCount} featured`}
-          title="My learning reflected in personal projects."
-          lead="Each project is treated as a testament to my skills with visual evidence, context, tooling, and a clear path to the source code."
+          title="The projects I built while learning."
+          lead="Every project here shows what I was learning at the time, the tools I used, and where you can read the source."
         >
           <ProjectGrid compact limit={homeProjectCount} />
           <div className="section-action">
@@ -56,7 +56,7 @@ export function ProjectsPage() {
         lead="An archive of projects, systems, and experiments currently worth showing."
       />
       <main>
-        <Section id="all-projects" eyebrow="Archive" title="Built for more than just learning.">
+        <Section id="all-projects" eyebrow="Archive" title="Built while learning, kept because they work.">
           <ProjectGrid variant="archive" />
         </Section>
 
@@ -64,7 +64,7 @@ export function ProjectsPage() {
           id="starred"
           eyebrow={`Reference shelf · ${starred.length} starred`}
           title="Open source I keep within reach."
-          lead="Repositories I've starred while learning — tools and systems whose craft I study, borrow from, and ship against."
+          lead="Repositories I have starred as I learn. Each one is a piece of craft I keep coming back to study or borrow."
         >
           <StarredList />
         </Section>
@@ -76,7 +76,7 @@ export function ProjectsPage() {
 export function AboutPage() {
   return (
     <>
-      <PageHero eyebrow={profile.role} title="A builder in the making." lead={profile.tagline} />
+      <PageHero eyebrow={profile.role} title="Still learning, still building." lead={profile.tagline} />
       <main>
         <Section id="story" eyebrow="Story" title="Learning software development through real-world applications" lead={profile.intro}>
           <AboutSignal />
@@ -99,12 +99,12 @@ export function AboutPage() {
 export function AchievementsPage() {
   return (
     <>
-      <PageHero eyebrow="Credentials" title="Proof of a growing practice." lead="Certificates and milestones from a still-expanding technical path — learning in the open, one credential at a time." />
+      <PageHero eyebrow="Credentials" title="Certificates from a path that is still growing." lead="Certificates and milestones along a path that keeps expanding. Learning in the open, a credential at a time." />
       <main>
         <Section
           id="certificates"
           eyebrow={`Certificates · ${certificates.length} on file`}
-          title="Small signs of continued growth and practice."
+          title="A record of what I have picked up so far."
         >
           <CertificateGrid />
         </Section>
@@ -134,7 +134,7 @@ function Hero() {
 
         <motion.div className="hero-lower" variants={reveal}>
           <p>
-            I am building toward full stack and AI engineering through fast interfaces, structured learning, and product-minded craft.
+            I am working toward full stack and AI engineering through fast interfaces, consistent practice, and care for the details.
           </p>
           <div className="hero-panel" aria-label="Current focus">
             <span>Now</span>

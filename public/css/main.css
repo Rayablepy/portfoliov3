@@ -995,43 +995,96 @@ img {
 
 .certificates-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
     gap: 18px;
 }
 
 .certificate-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 300px;
+    padding: clamp(22px, 3vw, 30px);
     border-radius: var(--radius);
 }
 
-.certificate-image {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-    margin: 14px;
-    border-radius: 12px;
-    background: #10131a;
+.certificate-card h3 {
+    margin: 4px 0 0;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
 }
 
-.certificate-image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.certificate-content {
+.certificate-head {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: clamp(26px, 4vw, 46px);
+    align-items: center;
+    gap: 12px;
 }
 
-.certificate-content p:last-child {
-    margin: 14px 0 0;
+.certificate-emblem {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(215, 255, 95, 0.35);
+    border-radius: 10px;
+    color: var(--lime);
+    background: rgba(215, 255, 95, 0.06);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.certificate-card .certificate-issuer {
+    margin: 0;
+    color: var(--dim);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.certificate-year {
+    margin-left: auto;
+    color: var(--lime);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.76rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.certificate-description {
+    margin: 0;
+}
+
+.certificate-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-soft);
+}
+
+.certificate-level {
+    color: var(--amber);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.certificate-issued {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--dim);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+}
+
+.certificate-issued svg {
+    color: var(--lime);
 }
 
 .contact-panel {
@@ -1218,13 +1271,8 @@ img {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .project-card,
-    .certificate-card {
+    .project-card {
         grid-template-columns: 1fr;
-    }
-
-    .certificate-image {
-        aspect-ratio: 16 / 10;
     }
 
     .project-row {
