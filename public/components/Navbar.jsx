@@ -37,7 +37,12 @@ export function Navbar({ activePage }) {
 
       <nav className="nav-shell" aria-label="Primary navigation">
         {navigation.map((item, index) => (
-          <a href={item.href} className={activePage === item.key ? 'active' : undefined} key={item.key}>
+          <a
+            href={item.href}
+            aria-current={activePage === item.key ? 'page' : undefined}
+            className={activePage === item.key ? 'active' : undefined}
+            key={item.key}
+          >
             <span>{String(index + 1).padStart(2, '0')}</span>
             {item.label}
           </a>
@@ -63,6 +68,7 @@ export function Navbar({ activePage }) {
         {navigation.map((item, index) => (
           <a
             href={item.href}
+            aria-current={activePage === item.key ? 'page' : undefined}
             className={activePage === item.key ? 'active' : undefined}
             key={item.key}
             onClick={() => setMenuOpen(false)}
