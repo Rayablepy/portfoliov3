@@ -16,7 +16,8 @@ export const profile = {
   social: {
     github,
     linkedin: 'https://www.linkedin.com/in/muhammad-rayhan-619908372/',
-    instagram: 'https://www.instagram.com/rayhan08._/'
+    instagram: 'https://www.instagram.com/rayhan08._/',
+    huggingface: 'https://huggingface.co/Rayhan-08',
   }
 };
 
