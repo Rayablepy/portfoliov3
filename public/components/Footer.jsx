@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-top">
         <a className="footer-brand" href="#/">
-          Muhammad Rayhan
+          Rayhan
         </a>
         <p>Full stack development, Applied AI and data analytics.</p>
       </div>
@@ -39,6 +39,11 @@ export function Footer() {
             </li>
             <li>
               <a href={`mailto:${profile.email}`}>Email</a>
+            </li>
+            <li>
+              <a href={profile.social.huggingface} target="_blank" rel="noopener noreferrer">
+                HuggingFace
+              </a>
             </li>
           </ul>
         </div>

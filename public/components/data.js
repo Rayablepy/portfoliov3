@@ -67,6 +67,16 @@ export const projects = [
     outcome: 'Turned a dense public data portal into a small importable library for analytics and learning projects.',
     tech: ['Python','HTTPX'],
     github: `${github}/LTADataMallpy`
+  },
+  {
+    title: 'IMDBert',
+    eyebrow: 'Applied AI',
+    description:
+      "A binary classification DistilBERT model fine tuned on a dataset of IMDB movie reviews, built to classify positive and negative reviews.",
+    outcome: 'Ultimately helped me learn the fundamentals of pytorch and common machine learning workflows.',
+    tech: ['Python', 'Streamlit', 'Pytorch', 'HuggingFace', 'Transformers'],
+    link: "imdbert-demo.streamlit.app",
+    github: `${github}/IMDBert`
   }
 ];
 
