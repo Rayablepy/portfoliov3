@@ -206,7 +206,8 @@ function ContactPanel() {
   const socials = [
     { label: 'GitHub', url: profile.social.github },
     { label: 'LinkedIn', url: profile.social.linkedin },
-    { label: 'Instagram', url: profile.social.instagram }
+    { label: 'Instagram', url: profile.social.instagram },
+    { label: 'HuggingFace', url: profile.social.huggingface }
   ];
 
   return (

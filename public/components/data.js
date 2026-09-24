@@ -76,7 +76,7 @@ export const projects = [
       "A binary classification DistilBERT model fine tuned on a dataset of IMDB movie reviews, built to classify positive and negative reviews.",
     outcome: 'Ultimately helped me learn the fundamentals of pytorch and common machine learning workflows.',
     tech: ['Python', 'Streamlit', 'Pytorch', 'HuggingFace', 'Transformers'],
-    link: "imdbert-demo.streamlit.app",
+    link: "https://imdbert-demo.streamlit.app",
     github: `${github}/IMDBert`
   }
 ];
