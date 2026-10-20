@@ -1,65 +1,40 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Award, Code2 } from 'lucide-react';
-
-export function ProjectCard({ project, index = 0, compact = false }) {
-  return (
-    <motion.article className={`project-card${compact ? ' compact' : ''}`} whileHover={{ y: -6 }}>
-      {project.image && (
-        <div className="project-media">
-          <img src={project.image} alt={`Preview of ${project.title}`} loading="lazy" />
-          <span className="project-index">P{String(index + 1).padStart(2, '0')}</span>
-        </div>
-      )}
-
-      <div className="project-body">
-        <p className="eyebrow">{project.eyebrow || 'Featured build'}</p>
-        <h3>{project.title}</h3>
-        <p>{project.description}</p>
-        {!compact && project.outcome && <p className="project-outcome">{project.outcome}</p>}
-
-        <TechTags tech={project.tech} />
-
-        <div className="card-actions">
-          {project.link && (
-            <a href={project.link} className="text-link" target="_blank" rel="noopener noreferrer">
-              Open build <ArrowUpRight size={16} />
-            </a>
-          )}
-          {project.github && (
-            <a href={project.github} className="text-link" target="_blank" rel="noopener noreferrer">
-              Read source <Code2 size={16} />
-            </a>
-          )}
-        </div>
-      </div>
-    </motion.article>
-  );
-}
+import { ArrowUpRight, Award, Star } from 'lucide-react';
 
 export function ProjectRow({ project, index = 0 }) {
   return (
     <article className="project-row">
-      <span className="row-index" aria-hidden="true">
-        {String(index + 1).padStart(2, '0')}
-      </span>
+      <div className="project-row-meta">
+        <span className="project-index" aria-hidden="true">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <span className="project-year">{project.year}</span>
+      </div>
 
-      <div className="row-body">
-        <h3>{project.title}</h3>
-        <p>{project.description}</p>
+      <div className="project-row-main">
+        <div className="project-row-title">
+          <h3>{project.title}</h3>
+          <span className="project-discipline">{project.discipline}</span>
+        </div>
+        <p className="project-description">{project.description}</p>
         <TechTags tech={project.tech} />
       </div>
 
-      <div className="row-actions">
-        {project.github && (
-          <a href={project.github} className="text-link" target="_blank" rel="noopener noreferrer">
-            Source <Code2 size={15} />
-          </a>
-        )}
-        {project.link && (
-          <a href={project.link} className="text-link" target="_blank" rel="noopener noreferrer">
-            Open build <ArrowRight size={15} />
-          </a>
-        )}
+      <div className="project-row-side">
+        <span className="project-status">{project.status}</span>
+        <div className="project-links">
+          {project.github && (
+            <a className="text-link" href={project.github} target="_blank" rel="noopener noreferrer">
+              Source
+              <ArrowUpRight size={13} aria-hidden="true" />
+            </a>
+          )}
+          {project.link && (
+            <a className="text-link" href={project.link} target="_blank" rel="noopener noreferrer">
+              Visit
+              <ArrowUpRight size={13} aria-hidden="true" />
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );
@@ -67,43 +42,44 @@ export function ProjectRow({ project, index = 0 }) {
 
 export function SkillCard({ skill }) {
   return (
-    <motion.div className="skill-card" whileHover={{ y: -4, scale: 1.02 }}>
-      <img src={skill.icon} alt="" loading="lazy" />
+    <div className="skill-card">
+      <img src={skill.icon} alt="" loading="eager" decoding="async" />
       <span>{skill.name}</span>
-    </motion.div>
+    </div>
   );
 }
 
 export function SkillGroup({ group }) {
   return (
-    <motion.article className="skill-group" whileHover={{ y: -5 }}>
+    <article className="skill-group">
       <p className="eyebrow">{group.category}</p>
       <h3>{group.summary}</h3>
       <TechTags tech={group.skills} />
-    </motion.article>
+    </article>
   );
 }
 
-export function ExperienceCard({ item, index }) {
+export function ExperienceRow({ item, index }) {
   return (
-    <motion.article className="experience-card" whileHover={{ x: 5 }}>
-      <div className="timeline-dot" aria-hidden="true" />
-      <span className="timeline-index" aria-hidden="true">
-        {String(index + 1).padStart(2, '0')}
-      </span>
-      <div>
-        <p className="eyebrow">{item.period}</p>
-        <h3>{item.role}</h3>
-        <h4>{item.company}</h4>
-        <p>{item.description}</p>
+    <article className="experience-row">
+      <div className="experience-meta">
+        <span className="experience-index" aria-hidden="true">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <span className="experience-period">{item.period}</span>
       </div>
-    </motion.article>
+      <div className="experience-main">
+        <h3>{item.role}</h3>
+        <p className="experience-company">{item.company}</p>
+        <p className="experience-description">{item.description}</p>
+      </div>
+    </article>
   );
 }
 
 export function CertificateCard({ certificate, index = 0 }) {
   return (
-    <motion.article className="certificate-card" whileHover={{ y: -5 }}>
+    <article className="certificate-card">
       <div className="certificate-head">
         <span className="certificate-emblem" aria-hidden="true">
           {String(index + 1).padStart(2, '0')}
@@ -118,10 +94,11 @@ export function CertificateCard({ certificate, index = 0 }) {
       <div className="certificate-foot">
         {certificate.level && <span className="certificate-level">{certificate.level}</span>}
         <span className="certificate-issued">
-          <Award size={14} /> Credential
+          <Award size={14} aria-hidden="true" />
+          Credential
         </span>
       </div>
-    </motion.article>
+    </article>
   );
 }
 
@@ -130,8 +107,10 @@ const starFormatter = new Intl.NumberFormat('en', { notation: 'compact', maximum
 export function StarredRow({ item }) {
   return (
     <a className="starred-row" href={item.url} target="_blank" rel="noopener noreferrer">
-      <span className="starred-stars" aria-hidden="true">
-        ★ {starFormatter.format(item.stars)}
+      <span className="starred-stars">
+        <Star size={13} aria-hidden="true" />
+        {starFormatter.format(item.stars)}
+        <span className="sr-only">stars</span>
       </span>
       <span className="starred-main">
         <span className="starred-name">
@@ -141,8 +120,8 @@ export function StarredRow({ item }) {
         <span className="starred-description">{item.description}</span>
       </span>
       <span className="starred-meta">
-        {item.language}
-        <ArrowRight size={15} />
+        {item.language || 'Docs'}
+        <ArrowUpRight size={14} aria-hidden="true" />
       </span>
     </a>
   );

@@ -1,6 +1,3 @@
-import certificateImage from '../resources file/cert1.png';
-import projectImage from '../resources file/img_1.png';
-
 const github = 'https://github.com/Rayablepy';
 
 export const profile = {
@@ -11,13 +8,15 @@ export const profile = {
   intro:
     "I started coding in Secondary 3 as a Computing student, figuring out what my first programs could even do. Since then I have been working toward AI engineering and building full stack sites that load fast, stay clear, and feel good to use. I am currently on that track at Nanyang Polytechnic, studying Applied AI and Analytics across software, data, and intelligent systems.",
   location: 'Singapore',
-  role: 'Full stack developer and aspiring AI engineer',
+  role: 'Full stack developer and Applied AI and Analytics student',
+  studying: 'Applied AI and Analytics',
+  school: 'Nanyang Polytechnic',
   focus: ['Full stack systems', 'Applied AI'],
   social: {
     github,
     linkedin: 'https://www.linkedin.com/in/muhammad-rayhan-619908372/',
     instagram: 'https://www.instagram.com/rayhan08._/',
-    huggingface: 'https://huggingface.co/Rayhan-08',
+    huggingface: 'https://huggingface.co/Rayhan-08'
   }
 };
 
@@ -31,20 +30,25 @@ export const navigation = [
 export const projects = [
   {
     title: 'Personal Portfolio Website',
-    eyebrow: 'Featured build',
+    discipline: 'Front end',
+    year: '2025',
+    role: 'Design and build',
+    status: 'Live',
     description:
       "The site you're on right now. I built it to present my engineering path, selected projects, the tools I know, and what I care about.",
     outcome: 'A React interface built for speed, with editorial spacing, intentional motion, and components I can reuse.',
     tech: ['React', 'Vite', 'JavaScript', 'Framer Motion', 'Tailwind CSS'],
-    image: projectImage,
     link: 'https://rayhan-portfolio-dev.vercel.app',
     github: `${github}/portfoliov3`
   },
   {
     title: 'Charles',
-    eyebrow: 'Applied AI',
+    discipline: 'Applied AI',
+    year: '2025-26',
+    role: 'Agent architecture',
+    status: 'In progress',
     description:
-      'A personal AI assistant built with LangChain Deep Agents and LangGraph. It makes a plan, reaches for tools, and remembers past conversations across sessions, all served through the free OpenRouter API plus a local model server.',
+      'A personal AI assistant built with LangChain Deep Agents and LangGraph. It makes a plan, reaches for tools, and remembers past conversations across sessions, served through the free OpenRouter API plus a local model server.',
     outcome:
       'One assistant with three parts: a Deep Agent core, a local RAG store over my own documents, and filesystem and notes tools that keep memory across sessions.',
     tech: ['Python', 'LangChain', 'LangGraph', 'Chroma', 'LM Studio', 'OpenRouter'],
@@ -52,7 +56,10 @@ export const projects = [
   },
   {
     title: 'NL2RAG',
-    eyebrow: 'Applied AI',
+    discipline: 'Applied AI',
+    year: '2026',
+    role: 'RAG pipeline',
+    status: 'In progress',
     description:
       'A RAG pipeline that runs entirely on your own machine. Upload files in a Streamlit UI, embed them with a local model from LM Studio, then chat with a LangChain agent that searches the vector store only when it needs to.',
     outcome:
@@ -62,21 +69,27 @@ export const projects = [
   },
   {
     title: 'LTADataMallpy',
-    eyebrow: 'Data & Analytics',
+    discipline: 'Data and analytics',
+    year: '2026',
+    role: 'Library design',
+    status: 'On PyPI',
     description:
-      "A tidy Python wrapper around Singapore's LTA DataMall API. Bus arrivals, taxi availability, and traffic data come back as structured Python objects instead of raw JSON. Now officially released on PyPi.",
+      "A tidy Python wrapper around Singapore's LTA DataMall API. Bus arrivals, taxi availability, and traffic data come back as structured Python objects instead of raw JSON. Now officially released on PyPI.",
     outcome: 'Turned a dense public data portal into a small importable library for analytics and learning projects.',
-    tech: ['Python','HTTPX'],
+    tech: ['Python', 'HTTPX'],
     github: `${github}/LTADataMallpy`
   },
   {
     title: 'IMDBert',
-    eyebrow: 'Applied AI',
+    discipline: 'Applied AI',
+    year: '2026',
+    role: 'Model training',
+    status: 'Live demo',
     description:
-      "A binary classification DistilBERT model fine tuned on a dataset of IMDB movie reviews, built to classify positive and negative reviews.",
-    outcome: 'Ultimately helped me learn the fundamentals of pytorch and common machine learning workflows.',
-    tech: ['Python', 'Streamlit', 'Pytorch', 'HuggingFace', 'Transformers'],
-    link: "https://imdbert-demo.streamlit.app",
+      'A binary classification DistilBERT model fine-tuned on a dataset of IMDB movie reviews, built to classify positive and negative reviews.',
+    outcome: 'Helped me learn the fundamentals of PyTorch and the common workflows behind a trained model.',
+    tech: ['Python', 'Streamlit', 'PyTorch', 'Hugging Face', 'Transformers'],
+    link: 'https://imdbert-demo.streamlit.app',
     github: `${github}/IMDBert`
   }
 ];
@@ -97,7 +110,7 @@ export const starred = [
     description: 'A skill file for removing AI tells from prose.',
     stars: 17000,
     language: null
-  },
+  }
 ];
 
 export const iconSkills = [
@@ -157,22 +170,22 @@ export const iconSkills = [
 
 export const skillGroups = [
   {
-    category: 'Frontend Systems',
+    category: 'Frontend systems',
     summary: 'Interfaces with responsive layouts, motion, and component structure.',
     skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS', 'Bootstrap', 'Streamlit']
   },
   {
-    category: 'Backend Systems',
+    category: 'Backend systems',
     summary: 'APIs, storage, and foundations for all my full stack applications.',
     skills: ['Node.js', 'Python', 'SQLite', 'MySQL', 'PostgreSQL', 'MongoDB']
   },
   {
-    category: 'Artificial Intelligence',
+    category: 'Artificial intelligence',
     summary: 'The tools I train and build AI systems with.',
     skills: ['LangChain', 'LM Studio', 'Deep Agents', 'RAG']
   },
   {
-    category: 'Creative Workflow',
+    category: 'Creative workflow',
     summary: 'Tools I use to turn ideas into clean, maintainable builds.',
     skills: ['Git', 'Docker', 'Figma', 'VS Code', 'JetBrains Suite']
   }
@@ -208,11 +221,10 @@ export const certificates = [
     year: '2025',
     level: 'Short course',
     description:
-      'Earned after a short course on the AI practices that matter: prompting well, understanding how models behave, and using them responsibly.',
-    image: certificateImage
+      'Earned after a short course on the AI practices that matter: prompting well, understanding how models behave, and using them responsibly.'
   },
   {
-    title: 'AI For Industry – Foundations in AI',
+    title: 'AI For Industry: Foundations in AI',
     issuer: 'AI Singapore',
     year: '2026',
     level: 'Industry foundation',
@@ -228,7 +240,7 @@ export const certificates = [
       'A hands-on pass through KNIME, building analytics workflows end to end from raw data to final output.'
   },
   {
-    title: 'Google Cloud Responsible AI: Applying AI principles with Google Cloud',
+    title: 'Google Cloud Responsible AI: Applying AI Principles',
     issuer: 'Google Cloud',
     year: '2026',
     level: 'Applied practice',

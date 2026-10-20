@@ -1,15 +1,24 @@
-import Lenis from 'lenis';
-import { AnimatePresence, motion, MotionConfig, useMotionValue, useSpring } from 'framer-motion';
+import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
 import { Footer } from './Footer.jsx';
 import { Navbar } from './Navbar.jsx';
 import { AboutPage, AchievementsPage, HomePage, ProjectsPage } from './pages.jsx';
 
 const routes = {
-  '/': { key: 'home', title: 'Home | Muhammad Rayhan', component: HomePage },
+  '/': { key: 'home', title: 'Muhammad Rayhan | Full Stack Developer', component: HomePage },
   '/projects': { key: 'projects', title: 'Projects | Muhammad Rayhan', component: ProjectsPage },
-  '/about': { key: 'about', title: 'About Me | Muhammad Rayhan', component: AboutPage },
-  '/achievements': { key: 'achievements', title: 'Achievements | Muhammad Rayhan', component: AchievementsPage }
+  '/about': { key: 'about', title: 'About | Muhammad Rayhan', component: AboutPage },
+  '/achievements': {
+    key: 'achievements',
+    title: 'Achievements | Muhammad Rayhan',
+    component: AchievementsPage
+  }
+};
+
+const pageTransition = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0, transition: { type: 'spring', bounce: 0, duration: 0.35 } },
+  exit: { opacity: 0, y: -4, transition: { duration: 0.12, ease: 'easeOut' } }
 };
 
 export function App() {
@@ -45,52 +54,20 @@ export function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
-      return undefined;
-    }
-
-    const lenis = new Lenis({
-      duration: 1.05,
-      smoothWheel: true,
-      wheelMultiplier: 0.9
-    });
-
-    let frameId;
-    const raf = (time) => {
-      lenis.raf(time);
-      frameId = requestAnimationFrame(raf);
-    };
-
-    frameId = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(frameId);
-      lenis.destroy();
-    };
-  }, []);
-
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion="user" transition={{ type: 'spring', bounce: 0, duration: 0.35 }}>
       <a className="skip-link" href="#main-content" onClick={onSkipClick}>
         Skip to content
       </a>
-      <div className="site-bg" aria-hidden="true">
-        <span className="aurora aurora-one" />
-        <span className="aurora aurora-two" />
-      </div>
-      <CursorSpotlight />
       <Navbar activePage={route.key} />
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={route.key}
           id="main-content"
           tabIndex={-1}
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          initial={pageTransition.initial}
+          animate={pageTransition.animate}
+          exit={pageTransition.exit}
         >
           <Page />
         </motion.div>
@@ -105,30 +82,6 @@ function getHashPath() {
   return hash || '/';
 }
 
-function CursorSpotlight() {
-  const x = useMotionValue(-200);
-  const y = useMotionValue(-200);
-  const springX = useSpring(x, { stiffness: 90, damping: 24, mass: 0.4 });
-  const springY = useSpring(y, { stiffness: 90, damping: 24, mass: 0.4 });
-
-  useEffect(() => {
-    const pointerFine = window.matchMedia('(pointer: fine)').matches;
-    if (!pointerFine) {
-      return undefined;
-    }
-
-    const onPointerMove = (event) => {
-      x.set(event.clientX - 190);
-      y.set(event.clientY - 190);
-    };
-
-    window.addEventListener('pointermove', onPointerMove);
-    return () => window.removeEventListener('pointermove', onPointerMove);
-  }, [x, y]);
-
-  return <motion.div className="cursor-spotlight" style={{ x: springX, y: springY }} aria-hidden="true" />;
-}
-
 function onSkipClick(event) {
   event.preventDefault();
   const main = document.getElementById('main-content');
@@ -137,4 +90,3 @@ function onSkipClick(event) {
     main.scrollIntoView();
   }
 }
-

@@ -1,41 +1,71 @@
-import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Mail, Sparkles } from 'lucide-react';
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import { useRef } from 'react';
-import { CertificateGrid, ExperienceList, ProjectGrid, Section, SkillCards, SkillGroups, StarredList, reveal } from './Sections.jsx';
-import { certificates, experience, profile, projects, skillGroups, starred } from './data.js';
+import {
+  CertificateGrid,
+  CertificateLedger,
+  ExperienceList,
+  ProjectIndex,
+  Section,
+  SkillGroups,
+  SkillMarquee,
+  StarredList,
+  reveal,
+  stagger
+} from './Sections.jsx';
+import { certificates, profile, projects, starred } from './data.js';
+
+const year = new Date().getFullYear();
+const viewport = { once: true, margin: '-60px' };
 
 export function HomePage() {
   return (
     <>
-      <Hero />
+      <Masthead />
 
       <main>
-        <Section
-          id="about"
-          eyebrow="01 / Profile"
-          title="An aspiring engineer in AI, Full-stack application development and more."
-          lead={profile.intro}
-          className="about-section"
-        >
-          <AboutSignal />
+        <Section id="profile" eyebrow="01 / Profile" title="The short version.">
+          <ProfileBlock />
         </Section>
 
         <Section
-          id="projects"
-          eyebrow="02 / Work Index"
-          title="The projects I built while learning."
-          lead="Every project here shows what I was learning at the time, the tools I used, and where you can read the source."
+          id="work"
+          eyebrow="02 / Selected work"
+          title="Selected work."
+          lead={`Three builds from the archive, with the stack and the source attached.`}
         >
-          <ProjectsCta />
+          <ProjectIndex limit={3} />
+          <div className="section-foot">
+            <a className="text-link" href="#/projects">
+              Full archive
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
+          </div>
         </Section>
 
         <Section
-          id="skills"
-          eyebrow="03 / Operating Stack"
-          title="The various tools and technologies I use in development."
+          id="stack"
+          eyebrow="03 / Stack"
+          title="Tools I reach for."
+          lead="Grouped by where they sit in a project."
         >
-          <SkillCards />
+          <SkillMarquee />
           <SkillGroups />
+        </Section>
+
+        <Section
+          id="credentials"
+          eyebrow="04 / Credentials"
+          title="Credentials on file."
+          lead="Courses and certifications I finished outside coursework."
+        >
+          <CertificateLedger limit={3} />
+          <div className="section-foot">
+            <a className="text-link" href="#/achievements">
+              All {certificates.length} credentials
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
+          </div>
         </Section>
 
         <ContactPanel />
@@ -48,20 +78,25 @@ export function ProjectsPage() {
   return (
     <>
       <PageHero
-        eyebrow={`${projects.length} ${projects.length === 1 ? 'build' : 'builds'} in the archive`}
-        title="Selected work"
-        lead="An archive of projects, systems, and experiments currently worth showing."
+        eyebrow={`Archive / ${projects.length} builds`}
+        title="Every build, in one place."
+        lead="Listed in the order I built them. Each entry has the stack, the status, and the source."
       />
       <main>
-        <Section id="all-projects" eyebrow="Archive" title="Built while learning, kept because they work.">
-          <ProjectGrid variant="archive" />
+        <Section
+          id="archive"
+          eyebrow="01 / Index"
+          title="The archive."
+          lead={`${projects.length} projects, from a local RAG pipeline to a published Python library.`}
+        >
+          <ProjectIndex />
         </Section>
 
         <Section
           id="starred"
-          eyebrow={`Reference shelf · ${starred.length} starred`}
+          eyebrow="02 / Reference shelf"
           title="Open source I keep within reach."
-          lead="Repositories I have starred as I learn. Each one is a piece of craft I keep coming back to study or borrow."
+          lead={`${starred.length} repositories I star while learning, each one worth a closer read.`}
         >
           <StarredList />
         </Section>
@@ -73,17 +108,31 @@ export function ProjectsPage() {
 export function AboutPage() {
   return (
     <>
-      <PageHero eyebrow={profile.role} title="Still learning, still building." lead={profile.tagline} />
+      <PageHero
+        eyebrow="Profile"
+        title="The longer version."
+        lead={`${profile.studying} at ${profile.school}, building between classes.`}
+      />
       <main>
-        <Section id="story" eyebrow="Story" title="Learning software development through real-world applications" lead={profile.intro}>
-          <AboutSignal />
+        <Section id="story" eyebrow="01 / Story" title="How I got here.">
+          <ProfileBlock />
         </Section>
 
-        <Section id="experience" eyebrow={`Timeline · ${experience.length} milestones`} title="A focused path, still early and intentional.">
+        <Section
+          id="timeline"
+          eyebrow="02 / Timeline"
+          title="Where I've studied."
+          lead="School, then polytechnic, plus everything I picked up on my own."
+        >
           <ExperienceList />
         </Section>
 
-        <Section id="all-skills" eyebrow={`Capabilities · ${skillGroups.length} groups`} title="A stack for practical, polished digital work.">
+        <Section
+          id="capabilities"
+          eyebrow="03 / Capabilities"
+          title="What I work with."
+          lead="The tools I use most, grouped by the part of a build they belong to."
+        >
           <SkillGroups />
         </Section>
 
@@ -96,12 +145,17 @@ export function AboutPage() {
 export function AchievementsPage() {
   return (
     <>
-      <PageHero eyebrow="Credentials" title="Certificates from a path that is still growing." lead="Certificates and milestones along a path that keeps expanding. Learning in the open, a credential at a time." />
+      <PageHero
+        eyebrow={`Credentials / ${certificates.length} on file`}
+        title="Certificates and courses."
+        lead="The issuer, level, and year for each."
+      />
       <main>
         <Section
           id="certificates"
-          eyebrow={`Certificates · ${certificates.length} on file`}
-          title="A record of what I have picked up so far."
+          eyebrow="01 / Record"
+          title="On file."
+          lead="The record of what I completed, who issued it, and when."
         >
           <CertificateGrid />
         </Section>
@@ -110,42 +164,49 @@ export function AchievementsPage() {
   );
 }
 
-function Hero() {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 0.35], [0, 140]);
-
+function Masthead() {
   return (
-    <section className="hero-banner" id="home">
-      <motion.div className="hero-orbit" style={{ y }} aria-hidden="true" />
-      <motion.div className="hero-content" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.12 } } }}>
-        <motion.p className="hero-kicker" variants={reveal}>
-          <Sparkles size={16} /> {profile.role}
-        </motion.p>
+    <section className="masthead" id="home">
+      <div className="wrap">
+        <motion.div
+          className="masthead-inner"
+          initial="hidden"
+          animate="visible"
+          variants={stagger}
+        >
+          <motion.div className="masthead-meta" variants={reveal}>
+            <span className="eyebrow">Portfolio / {year}</span>
+            <span className="masthead-status">
+              <i aria-hidden="true" />
+              {profile.availability}
+            </span>
+          </motion.div>
 
-        <motion.h1 variants={reveal}>
-          <span>Aspiring</span>
-          <span>to build</span>
-          <span>solutions</span>
-          <span>for the future.</span>
-        </motion.h1>
+          <motion.h1 className="masthead-title" variants={reveal}>
+            <span>Muhammad</span>
+            <span>Rayhan</span>
+          </motion.h1>
 
-        <motion.div className="hero-lower" variants={reveal}>
-          <p>
-            I am working toward full stack and AI engineering through fast interfaces, consistent practice, and care for the details.
-          </p>
-          <div className="hero-panel" aria-label="Current focus">
-            <span>Now</span>
-            <strong>Applied AI and Analytics student</strong>
-            <small>Full stack / Python / Analytics</small>
-          </div>
-          <div className="hero-buttons">
-            <MagneticLink href="#/projects">View projects</MagneticLink>
-            <a href="#/about" className="ghost-link">
-              About me <ArrowRight size={16} />
-            </a>
-          </div>
+          <motion.div className="masthead-foot" variants={reveal}>
+            <div className="masthead-copy">
+              <p className="masthead-role">
+                {profile.role}. Based in {profile.location}.
+              </p>
+              <p className="masthead-statement">
+                I build web tools and AI systems. Most of them start with a question I want answered.
+              </p>
+            </div>
+
+            <div className="masthead-actions">
+              <MagneticLink href="#/projects">See the work</MagneticLink>
+              <a className="button-ghost" href={`mailto:${profile.email}`}>
+                Get in touch
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -153,52 +214,52 @@ function Hero() {
 function PageHero({ eyebrow, title, lead }) {
   return (
     <section className="page-hero">
-      <motion.div className="page-hero-inner" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.12 } } }}>
-        <motion.p className="eyebrow" variants={reveal}>{eyebrow}</motion.p>
-        <motion.h1 variants={reveal}>{title}</motion.h1>
-        {lead && <motion.p variants={reveal}>{lead}</motion.p>}
-      </motion.div>
+      <div className="wrap">
+        <motion.div initial="hidden" animate="visible" variants={stagger}>
+          <motion.p className="eyebrow" variants={reveal}>
+            {eyebrow}
+          </motion.p>
+          <motion.h1 variants={reveal}>{title}</motion.h1>
+          {lead && (
+            <motion.p className="page-hero-lead" variants={reveal}>
+              {lead}
+            </motion.p>
+          )}
+        </motion.div>
+      </div>
     </section>
   );
 }
 
-function AboutSignal() {
-  return (
-    <motion.div className="about-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
-      {[
-        ['Location', profile.location],
-        ['Current path', 'Applied AI and Analytics'],
-        ['Focus', profile.focus.join(' / ')],
-        ['Availability', profile.availability]
-      ].map(([label, value]) => (
-        <motion.div className="signal-card" variants={reveal} key={label}>
-          <span>{label}</span>
-          <strong>{value}</strong>
-        </motion.div>
-      ))}
-    </motion.div>
-  );
-}
+function ProfileBlock() {
+  const facts = [
+    ['Based in', profile.location],
+    ['Studying', `${profile.studying}, ${profile.school}`],
+    ['Focus', profile.focus.join(' / ')],
+    ['Availability', profile.availability]
+  ];
 
-function ProjectsCta() {
   return (
-    <motion.a
-      className="project-cta"
-      href="#/projects"
+    <motion.div
+      className="profile-block"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
-      variants={reveal}
+      viewport={viewport}
+      variants={stagger}
     >
-      <div className="project-cta-body">
-        <p className="eyebrow">Full archive · {projects.length} projects</p>
-        <h3>My top projects, all in one place.</h3>
-        <p>Portfolio, AI assistants, RAG experiments, and API tooling, each with the source attached.</p>
-      </div>
-      <span className="project-cta-arrow" aria-hidden="true">
-        <ArrowUpRight size={24} />
-      </span>
-    </motion.a>
+      <motion.p className="profile-text" variants={reveal}>
+        {profile.intro}
+      </motion.p>
+
+      <motion.dl className="fact-list" variants={reveal}>
+        {facts.map(([label, value]) => (
+          <div className="fact-row" key={label}>
+            <dt>{label}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))}
+      </motion.dl>
+    </motion.div>
   );
 }
 
@@ -206,26 +267,49 @@ function ContactPanel() {
   const socials = [
     { label: 'GitHub', url: profile.social.github },
     { label: 'LinkedIn', url: profile.social.linkedin },
-    { label: 'Instagram', url: profile.social.instagram },
-    { label: 'HuggingFace', url: profile.social.huggingface }
+    { label: 'Hugging Face', url: profile.social.huggingface },
+    { label: 'Instagram', url: profile.social.instagram }
   ];
 
   return (
-    <section className="contact-panel" id="contact">
-      <div>
-        <p className="eyebrow">Open channel</p>
-        <h2>Have any more questions?</h2>
-      </div>
-      <a className="email-link" href={`mailto:${profile.email}`}>
-        <Mail size={22} />
-        {profile.email}
-      </a>
-      <div className="contact-links">
-        {socials.map((social) => (
-          <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer">
-            {social.label} <ArrowRight size={14} />
-          </a>
-        ))}
+    <section className="contact" id="contact">
+      <div className="wrap">
+        <motion.div
+          className="contact-head"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={stagger}
+        >
+          <motion.p className="eyebrow" variants={reveal}>
+            Contact
+          </motion.p>
+          <motion.h2 variants={reveal}>Say hello.</motion.h2>
+        </motion.div>
+
+        <motion.a
+          className="contact-email"
+          href={`mailto:${profile.email}`}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={reveal}
+        >
+          <span>{profile.email}</span>
+          <ArrowUpRight size={28} aria-hidden="true" />
+        </motion.a>
+
+        <div className="contact-bottom">
+          <p>I answer every message. Tell me what you're building, or what you want to learn.</p>
+          <div className="contact-links">
+            {socials.map((social) => (
+              <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer">
+                {social.label}
+                <ArrowUpRight size={12} aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -236,18 +320,18 @@ function MagneticLink({ href, children }) {
   const reduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 220, damping: 18, mass: 0.6 });
-  const springY = useSpring(y, { stiffness: 220, damping: 18, mass: 0.6 });
+  const springX = useSpring(x, { stiffness: 260, damping: 26, mass: 0.5 });
+  const springY = useSpring(y, { stiffness: 260, damping: 26, mass: 0.5 });
 
   const onPointerMove = (event) => {
-    if (!ref.current || reduceMotion) {
+    if (!ref.current || reduceMotion || event.pointerType !== 'mouse') {
       return;
     }
     const rect = ref.current.getBoundingClientRect();
     const dx = event.clientX - (rect.left + rect.width / 2);
     const dy = event.clientY - (rect.top + rect.height / 2);
-    x.set(Math.max(-14, Math.min(14, dx * 0.25)));
-    y.set(Math.max(-10, Math.min(10, dy * 0.25)));
+    x.set(Math.max(-7, Math.min(7, dx * 0.14)));
+    y.set(Math.max(-5, Math.min(5, dy * 0.14)));
   };
 
   const onPointerLeave = () => {
@@ -258,15 +342,15 @@ function MagneticLink({ href, children }) {
   return (
     <motion.a
       ref={ref}
-      className="magnetic-link"
+      className="button-primary"
       href={href}
       style={{ x: springX, y: springY }}
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
-      whileTap={{ scale: 0.97 }}
+      whileTap={{ scale: 0.98 }}
     >
       {children}
-      <ArrowRight size={16} />
+      <ArrowUpRight size={15} aria-hidden="true" />
     </motion.a>
   );
 }
