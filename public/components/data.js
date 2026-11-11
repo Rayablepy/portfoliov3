@@ -48,10 +48,10 @@ export const projects = [
     role: 'Agent architecture',
     status: 'In progress',
     description:
-      'A personal AI assistant built with LangChain Deep Agents and LangGraph. It makes a plan, reaches for tools, and remembers past conversations across sessions, served through the free OpenRouter API plus a local model server.',
+      'A personal AI assistant built with LangChain Deep Agents and LangGraph, powered by a BYOP infrastructure. It is capable of multi-step planning, long and short-term memory and comprehensive tool use.',
     outcome:
-      'One assistant with three parts: a Deep Agent core, a local RAG store over my own documents, and filesystem and notes tools that keep memory across sessions.',
-    tech: ['Python', 'LangChain', 'LangGraph', 'Chroma', 'LM Studio', 'OpenRouter'],
+      'Learnt to build stateful, secure, multi-step agentic systems by producing a general purpose, personal assistant to help me with daily tasks.',
+    tech: ['Python', 'LangChain', 'LangGraph', 'Chroma', 'LLM APIs', 'Transformers'],
     github: `${github}/Charles`
   },
   {
@@ -61,10 +61,10 @@ export const projects = [
     role: 'RAG pipeline',
     status: 'In progress',
     description:
-      'A RAG pipeline that runs entirely on your own machine. Upload files in a Streamlit UI, embed them with a local model from LM Studio, then chat with a LangChain agent that searches the vector store only when it needs to.',
+      'A RAG pipeline that runs entirely on your own machine. Upload files in a Gradio UI, and chat with a Langgraph agent outfitted with reranking and retrieval evaluation.',
     outcome:
       'It started as the foundation for a bigger agent workflow. It stays on your machine, keeps your data private, and lets you swap models through a single .env file.',
-    tech: ['Python', 'Streamlit', 'LangChain', 'ChromaDB', 'LM Studio'],
+    tech: ['Python', 'Gradio', 'LangGraph', 'Chroma', 'Transformers'],
     github: `${github}/NL2RAG`
   },
   {
